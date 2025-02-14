@@ -7,11 +7,12 @@ services:
     user: "root" # NOT SAFE FOR PRODUCTION!!
     working_dir: /home/node/app
     environment:
-      - NODE_ENV=dev
+      - NODE_ENV=development
     volumes:
       - ./app:/home/node/app
     ports: 
       - 3000:3000
+      - 9009:9009
     command: "tail -F anything"
 
     # Log in to the container to install, start node, etc.
