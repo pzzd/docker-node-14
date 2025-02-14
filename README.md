@@ -8,9 +8,19 @@ docker build -t 14-bookworm .
 ```
 
 
-Put your node app in /app.  Build image and make container from it:
+Put your node app in /app.  Build image and make container from it. Get into your container and do stuff.
 ```
-docker compose build
 docker compose up -d
-``` 
+docker ps
+docker exec -it CONTAINER_ID sh
+```
 
+## Notes
+
+You might need to tweak the path in volumes: - ./app/intranet: so that, in the container, package.json is in /home/node/app.
+
+In the container make sure node is there and install dependencies.
+```
+node -v
+npm install
+```
