@@ -1,0 +1,18 @@
+name: "node_14_app"
+services:
+  node:
+    14_bookworm:
+      build:
+        context: .
+        dockerfile: Dockerfile
+    user: "root" # NOT SAFE FOR PRODUCTION!!
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - ./app:/home/node/app
+    ports: 
+      - 3000:3000
+    command: "tail -F anything"
+
+    # Log in to the container to install, start node, etc.

@@ -1,0 +1,4 @@
+# Ignore everything in this directory
+app/*
+# Except this file
+!app/PLACEHOLDER.md
