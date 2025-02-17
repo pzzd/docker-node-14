@@ -1,18 +1,15 @@
-name: "node_14_app"
+name: "node_14_storybook"
 services:
   node:
     build:
       context: .
       dockerfile: Dockerfile
-    user: "root" # NOT SAFE FOR PRODUCTION!!
+    user: "node" # use root if you get stuck. root is NOT SAFE FOR PRODUCTION!!
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
     volumes:
-      - ./app:/home/node/app
+      - ./app:/home/node/app # update external path as needed
     ports: 
-      - 3000:3000
       - 9009:9009
-    command: "tail -F anything"
-
-    # Log in to the container to install, start node, etc.
+    command: "npm run storybook"
