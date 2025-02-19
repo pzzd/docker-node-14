@@ -9,6 +9,12 @@ Build image and make container from it.
 docker compose up -d
 ```
 
+Log in to the container and run Storybook.
+```
+docker exec -it CONTAINER_ID sh
+npm run storybook
+```
+
 You should now see Storybook running at http://localhost:9009. Then you can see the site at http://localhost:9009/ and develop in the external volume (not in the container).
 
 ## A specific implementation
@@ -21,7 +27,7 @@ You might need to tweak the path in volumes: - ./app/mysite: so that, in the con
 
 The Dockerfile installs all dependencies for the Storybook app. 
 
-The docker-compose.yml file builds the image, starts the container, and runs Storybook.
+The docker-compose.yml file builds the image starts the container.
 
 
 ## Sources

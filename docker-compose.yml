@@ -9,7 +9,7 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - ./app:/home/node/app # update external path as needed
+      - ./app/intranet:/home/node/app # update external path as needed
     ports: 
       - 9009:9009
-    command: "npm run storybook"
+    command: "tail -F anything"
