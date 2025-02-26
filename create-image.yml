@@ -1,8 +1,10 @@
 name: "node_14_storybook"
 services:
   node:
-    image: node_14_storybook-node:latest
-    user: "node"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: "root"
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development

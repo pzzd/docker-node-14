@@ -70,15 +70,19 @@ RUN set -ex \
   && yarn --version \
   && rm -rf /tmp/*
 
-RUN cd /usr/bin \
-  && wget https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz \
-  && tar xzf Python-2.7.9.tgz \
-  && cd Python-2.7.9 \
-  ./configure --enable-optimizations \
-  && npm config set python /usr/bin/Python-2.7.9/python.exe \
+# Python steps
+WORKDIR /usr/bin
+RUN wget https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz \
+  && tar xzf Python-2.7.9.tgz
+WORKDIR /usr/bin/Python-2.7.9
+RUN ./configure --enable-optimizations
+RUN make altinstall
+RUN npm config set python /usr/bin/Python-2.7.9/python
 
-RUN cd /home/node/app \
-  && npm install
+
+# Install npm modules
+WORKDIR /home/node/app
+RUN npm install
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
